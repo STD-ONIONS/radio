@@ -94,6 +94,20 @@ module.exports = function(grunt) {
 					ext: '.html',
 				}],
 			},
+			main: {
+				options: {
+					pretty: '',
+					separator: '',
+				},
+				files: [{
+					expand: true,
+					cwd: 'src/pug/',
+					src: '*.pug',
+					dest: 'docs/',
+					filter: 'isFile',
+					ext: '.html',
+				}],
+			}
 		},
 		replace: {
 			components: {
@@ -149,6 +163,7 @@ module.exports = function(grunt) {
 			"replace:components",
 			"uglify:components",
 			// Application
+			"pug:main",
 		]
 	);
 }
