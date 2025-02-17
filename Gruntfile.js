@@ -16,7 +16,7 @@ module.exports = function(grunt) {
 				dest: 'src/font',
 				options: {
 					engine: 'node',
-					hashes: false,
+					hashes: true,
 					destLess: 'src/less/fonts',
 					relativeFontPath: "/fonts/",
 					font: 'radioapp',
