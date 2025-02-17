@@ -137,7 +137,7 @@ module.exports = function(grunt) {
 		'default',
 		[
 			// Font`s create && convert
-			"webfont",
+			//"webfont",
 			"ttf2woff2",
 			// Components
 			"less:components",
