@@ -1,0 +1,17 @@
+{
+  "name": "radioapp",
+  "description": "",
+  "main": "Gruntfile.js",
+  "authors": [
+    "ProjectSoft <projectsoft2009@yandex.ru>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+	"name": "radioapp",
+	"version": "1.0.0",
+	"description": "",
+	"license": "MIT",
+	"author": "ProjectSoft <projectsoft2009@yandex.ru>",
+	"type": "commonjs",
+	"main": "Gruntfile.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"inst": "npm i",
+		"build": "grunt -v"
+	},
+	"dependencies": {
+		"grunt": "latest",
+		"grunt-contrib-clean": "latest",
+		"grunt-contrib-concat": "latest",
+		"grunt-contrib-copy": "latest",
+		"grunt-contrib-cssmin": "latest",
+		"grunt-contrib-imagemin": "latest",
+		"grunt-contrib-less": "latest",
+		"grunt-contrib-pug": "latest",
+		"grunt-contrib-requirejs": "latest",
+		"grunt-contrib-uglify-es": "latest",
+		"grunt-replace": "latest",
+		"grunt-ttf2woff2": "<=1.0.1",
+		"grunt-webfont": "<=1.6.0",
+		"load-grunt-tasks": "latest",
+		"ttf2woff2": "<=5.0.0"
+	}
+}
