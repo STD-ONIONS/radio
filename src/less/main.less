@@ -32,6 +32,59 @@ html, body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+	header {
+		-webkit-user-select: none;
+		-webkit-app-region: drag;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: stretch;
+		user-select: none;
+		box-shadow: 0 0 2px #000;
+		max-width: 100%;
+		width: 100%;
+		overflow: hidden;
+		line-height: 1;
+		position: relative;
+		z-index: 200;
+		h1 {
+			flex: 1;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			text-wrap: nowrap;
+			max-width: 100%;
+			padding-left: 10px;
+			padding-right: 10px;
+			font-size: 16px;
+			font-family: var(--font-family-bender);
+			font-weight: var(--font-weight-default);
+			margin: 0;
+		}
+		.title-icons {
+			-webkit-app-region: no-drag;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			align-items: stretch;
+			justify-content: space-between;
+			span {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: nowrap;
+				align-items: center;
+				justify-content: center;
+				padding: 9px 18px;
+				pointer-events: all;
+				cursor: pointer;
+				svg {
+					display: block;
+					width: 10px;
+					height: 10px;
+					pointer-events: none;
+				}
+			}
+		}
+	}
 	header,
 	footer {
 		flex: 0;

@@ -187,8 +187,10 @@ module.exports = function(grunt) {
 			// После первого запуска закомментировать
 			// Если добавили глифы или шрифт - раскомментировать.
 			// На следующий запуск - закомментировать
-			"webfont",
-			"ttf2woff2",
+			
+			//"webfont",
+			//"ttf2woff2",
+
 			// Components
 			"less:components",
 			"cssmin:components",
