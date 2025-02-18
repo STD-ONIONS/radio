@@ -1,0 +1,83 @@
+@charset "UTF-8";
+@import "fonts/radioapp";
+@import "fonts/bender";
+@import "fonts/jetbrains";
+
+:root {
+	--font-family-bender: 'Bender';
+	--font-family-jetbrains: 'JetBrains Mono Light';
+	--font-weight-default: 400;
+}
+
+* {
+	&,
+	&::before,
+	&::after {
+		box-sizing: border-box;
+	}
+}
+
+body {
+	margin: 0;
+	font-family: var(--font-family-bender);
+	font-weight: var(--font-weight-default);
+}
+
+html, body {
+ 	min-height: 100vh;
+ 	height: 100%;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	header,
+	footer {
+		flex: 0;
+	}
+	main {
+		background-image: radial-gradient(circle, #fdc9a0, #ff7000);
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		max-height: ~'calc(100vh - 130px)';
+		height: ~'calc(100vh - 130px)';
+		overflow: hidden;
+		position: relative;
+		&:after,
+		&:before {
+			content: "";
+			position: absolute;
+			display: block;
+			width: 100vw;
+			height: 100%;
+			top: 0;
+			left: 0;
+			background-repeat: no-repeat;
+		}
+		&:after {
+			background-image: data-uri('image/svg+xml;base64', 'data-uri/lazy_bg.svg');
+			background-position: center bottom;
+			background-size: cover;
+			z-index: 1;
+		}
+		&:before {
+			background-image: data-uri('data-uri/favicon.png');
+			background-position: center center;
+			background-size: 255px 255px;
+			z-index: 2;
+		}
+		.app {
+			background-color: #fff;
+			position: relative;
+			flex: 1;
+			max-width: 500px;
+			width: 100%;
+			margin: 0 auto;
+			height: 100%;
+			overflow-y: auto;
+			z-index: 100;
+		}
+	}
+}

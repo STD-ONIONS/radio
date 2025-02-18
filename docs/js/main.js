@@ -1,0 +1,1 @@
+!function(e,t){const n=document.querySelector("#app");for(let e in[...Array(10).keys()]){let e=t.createElement("radio-station");n.append(e)}}(window,document);

@@ -5,8 +5,8 @@ module.exports = function(grunt) {
 
 	require('load-grunt-tasks')(grunt);
 
-	var pkg = grunt.file.readJSON('package.json');
-	//fs.readFileSync('tpl/component.html');
+	var pkg = grunt.file.readJSON('package.json'),
+		version = (new Date()).getTime().toString();
 	grunt.initConfig({
 		globalConfig: {},
 		pkg: pkg,
@@ -50,19 +50,20 @@ module.exports = function(grunt) {
 				options: {
 					compress: false,
 					ieCompat: false,
-					plugins: [
-						
-					],
+					plugins: [],
 					data: function(dest, src) {
 						return {
-							"hash": uniqid(),
+							"hash": version,
 						}
 					}
 				},
 				files: {
 					'src/css/radiostation.css': [
 						'src/less/radiostation.less',
-					]
+					],
+					'docs/css/main.css': [
+						'src/less/main.less'
+					],
 				}
 			},
 		},
@@ -75,7 +76,10 @@ module.exports = function(grunt) {
 				files: {
 					'src/css/radiostation.css': [
 						'src/css/radiostation.css'
-					]
+					],
+					'docs/css/main.css': [
+						'docs/css/main.css'
+					],
 				}
 			},
 		},
@@ -98,6 +102,11 @@ module.exports = function(grunt) {
 				options: {
 					pretty: '',
 					separator: '',
+					data: function(dest, src) {
+						return {
+							"hash": version,
+						}
+					}
 				},
 				files: [{
 					expand: true,
@@ -116,7 +125,7 @@ module.exports = function(grunt) {
 						{
 							match: /%template%/g,
 							replacement: fs.readFileSync('src/test/radiostation.html').toString()
-						}
+						},
 					]
 				},
 				files: [
@@ -131,6 +140,27 @@ module.exports = function(grunt) {
 					},
 				]
 			},
+			main: {
+				options: {
+					patterns: [
+						{
+							match: /content:"(e\d+)"/g,
+							replacement: `content:"\\\\$1"`
+						}
+					]
+				},
+				files: [
+					{
+						expand: true,
+						flatten : true,
+						src: [
+							'docs/js/radiostation.js'
+						],
+						dest: 'docs/js/',
+						filter: 'isFile'
+					},
+				]
+			}
 		},
 		uglify : {
 			options: {
@@ -143,6 +173,9 @@ module.exports = function(grunt) {
 					'docs/js/radiostation.js': [
 						'docs/js/radiostation.js',
 					],
+					'docs/js/main.js': [
+						'src/js/main.js',
+					],
 				},
 			},
 		},
@@ -151,18 +184,19 @@ module.exports = function(grunt) {
 		'default',
 		[
 			// Font`s create && convert
+			// После первого запуска закомментировать
 			// Если добавили глифы или шрифт - раскомментировать.
 			// На следующий запуск - закомментировать
-			//"webfont",
-			//"ttf2woff2",
-
+			"webfont",
+			"ttf2woff2",
 			// Components
 			"less:components",
 			"cssmin:components",
 			"pug:components",
 			"replace:components",
-			"uglify:components",
 			// Application
+			"uglify:components",
+			"replace:main",
 			"pug:main",
 		]
 	);

@@ -1,8 +1,32 @@
 doctype html
 html(lang="ru")
 	head
+		base(href="/")
+		meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=EmulateIE9")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		meta(name="SKYPE_TOOLBAR" content ="SKYPE_TOOLBAR_PARSER_COMPATIBLE")
+		meta(name="color-scheme" content="only light")
+		meta(name="theme-color" content="#ffffff")
+		link(rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96")
+		link(rel="shortcut icon" href="/favicon.ico")
+		link(type="text/css" rel="stylesheet" href="/css/main.css?" + hash)
 		title
 			|Radio test
 	body
-		h1
-			|Radio test
+		.content
+			header
+				h1
+					|Radio test
+			main
+				#app.app
+			footer
+				p
+					|Developed by:
+					=" "
+					a(href="https://projectsoft.ru/" target="_blank")
+						|ProjectSoft
+					=" "
+					|&copy; 2008 - all
+		script(src="/js/radiostation.js?" + hash)
+		script(src="/js/main.js?" + hash)

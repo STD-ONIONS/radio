@@ -1,50 +1,51 @@
-class RadioStation extends HTMLElement {
-	constructor() {
-		super();
-		let template = `%template%`;
-		this.attachShadow({
-			mode: "open"
-		}).innerHTML = template;
-	}
+!(function(win, doc){
+	class RadioStation extends HTMLElement {
+		constructor() {
+			super();
+			let template = `%template%`;
+			this.attachShadow({
+				mode: "open"
+			}).innerHTML = template;
+		}
 
-	render() {
-		// Прорисовка
-	}
+		render() {
+			// Прорисовка
+		}
 
-	disconected() {
-		// Удаление объекта
-	}
+		disconected() {
+			// Удаление объекта
+		}
 
-	static get observedAttributes() {
-		// Массив отслеживаемых атрибутов
-		return [];
-	}
+		static get observedAttributes() {
+			// Массив отслеживаемых атрибутов
+			return [];
+		}
 
-	attributeChangedCallback(name, oldValue, newValue) {
-		// Отслеживание атрибутов
-		this.render();
-	}
-
-	handleError() {
-		// Ошибки?
-		console.log('ERROR');
-	}
-
-	connectedCallback() {
-		// Добавление в DOM
-		if(!this.rendered) {
+		attributeChangedCallback(name, oldValue, newValue) {
+			// Отслеживание атрибутов
 			this.render();
-			this.rendered = true;
+		}
+
+		handleError() {
+			// Ошибки?
+			console.log('ERROR');
+		}
+
+		connectedCallback() {
+			// Добавление в DOM
+			if(!this.rendered) {
+				this.render();
+				this.rendered = true;
+			}
+		}
+
+		disconnectedCallback() {
+			// Удаление из DOM.
+			if(this.rendered) {
+				this.rendered = false;
+				this.disconected();
+			}
 		}
 	}
-
-	disconnectedCallback() {
-		// Удаление из DOM.
-		if(this.rendered) {
-			this.rendered = false;
-			this.disconected();
-		}
-	}
-}
-
-customElements.define("radio-station", RadioStation);
+	win.customElements.define("radio-station", RadioStation);
+}(window, document));

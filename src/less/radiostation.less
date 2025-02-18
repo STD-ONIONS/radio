@@ -1,5 +1,92 @@
 @charset "UTF-8";
 @import "fonts/radioapp";
+@import "fonts/bender";
+@import "fonts/jetbrains";
+
 :host{
 	display: block;
+	font-family: 'Bender';
+	font-weight: 400;
+	user-select: none;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+.radiostation {
+	padding: 5px;
+}
+
+.radio {
+	&-item {
+		&-box {
+			display: flex;
+			flex-direction: row;
+			font-family: 'Bender';
+			font-size: 16px;
+		}
+		&-icon {
+			position: relative;
+			min-height: 48px;
+			min-width: 48px;
+			max-height: 48px;
+			max-width: 48px;
+			height: 48px;
+			width: 48px;
+			border-radius: 50%;
+			overflow: hidden;
+			.icons {
+				align-items: center;
+				background-color: rgba(0, 0, 0, .0);
+				color: white;
+				display: flex;
+				justify-content: center;
+				line-height: 1;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				top: 0;
+				right: 0;
+				transition: background-color .3s ease;
+				&::before {
+					transform: scale(0);
+					transition: transform .3s ease;
+				}
+				&:hover {
+					background-color: rgba(0, 0, 0, .35);
+					&::before {
+						transform: scale(1);
+					}
+				}
+			}
+		}
+		&-wrap {
+			flex: 1;
+			padding: 15px;
+			overflow: hidden;
+			span {
+				display: block;
+				font-family: 'Bender';
+				font-size: 16px;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+		}
+		&-handler {
+			display: flex;
+			.icon-handler {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				line-height: 1;
+				text-align: center;
+				span {
+					display: block;
+				}
+			}
+		}
+	}
 }
