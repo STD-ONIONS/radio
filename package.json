@@ -27,5 +27,8 @@
 		"grunt-webfont": "<=1.6.0",
 		"load-grunt-tasks": "latest",
 		"ttf2woff2": "<=5.0.0"
+	},
+	"devDependencies": {
+		"md5": "^2.3.0"
 	}
 }

@@ -1,12 +1,28 @@
 module.exports = function(grunt) {
 	process.removeAllListeners('warning');
 
-	const fs = require("node:fs");
+	const fs = require("node:fs"),
+		path = require("node:path"),
+		md5 = require("md5");
 
 	require('load-grunt-tasks')(grunt);
 
 	var pkg = grunt.file.readJSON('package.json'),
 		version = (new Date()).getTime().toString();
+
+	const md5_file2text = function(file = "") {
+		file = path.normalize(path.join(__dirname, file));
+		if(fs.existsSync(file)) {
+			// Файл присутствует
+			// Прочитать файл и получить его текст
+			// Текст в MD5
+			let text = fs.readFileSync(file).toString();
+			return md5(text, {encoding: "utf-8"});
+		} else {
+			// Файл отсутствует
+			return (new Date().getTime()).toString();
+		}
+	}
 	grunt.initConfig({
 		globalConfig: {},
 		pkg: pkg,
@@ -105,6 +121,9 @@ module.exports = function(grunt) {
 					data: function(dest, src) {
 						return {
 							"hash": version,
+							"hash_station": md5_file2text(`docs/js/radiostation.js`),
+							"hash_main": md5_file2text(`docs/js/main.js`),
+							"hash_css": md5_file2text(`docs/css/main.css`),
 						}
 					}
 				},

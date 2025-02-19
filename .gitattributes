@@ -7,6 +7,7 @@
 **/*.tpl text eol=lf
 **/*.pug text eol=lf
 **/*.less text eol=lf
+**/*.json text eol=lf
 
 /.editorconfig export-ignore
 /.git export-ignore
